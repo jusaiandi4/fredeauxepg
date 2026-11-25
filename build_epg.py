@@ -332,6 +332,9 @@ def main():
     matched_rows = [r for r in rows if r["name"] in matched_names]
 
     # write output
+    outdir = os.path.dirname(args.out)
+    if outdir:
+        os.makedirs(outdir, exist_ok=True)
     if args.out.endswith(".gz"):
         out = gzip.open(args.out, "wt", encoding="utf-8")
     else:
